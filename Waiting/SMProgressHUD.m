@@ -1,12 +1,12 @@
 //
-//  SMWaitingView.m
+//  SMProgressHUD.m
 //  Waiting
 //
 //  Created by Zakk Hoyt on 3/16/13.
 //  Copyright (c) 2013 Zakk Hoyt. All rights reserved.
 //
 
-#import "SMWaitingView.h"
+#import "SMProgressHUD.h"
 
 
 static CGFloat kWidth = 25;
@@ -14,9 +14,10 @@ static CGFloat kHeight = 25;
 static CGFloat kLineWidth = 2;
 
 
-@implementation SMWaitingView{
+@implementation SMProgressHUD{
     UIView* _views[9];
     UIView* _lines[8];
+    NSTimer *_lapTimer;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -24,6 +25,8 @@ static CGFloat kLineWidth = 2;
 
     self = [super initWithFrame:frame];
     if (self) {
+        self.animationType = kSMAnimateFadeSquaresThenLine;
+    
         self.backgroundColor = [UIColor clearColor];
         // add a background with a semialpha
         UIView *translucentBackground = [[UIView alloc]initWithFrame:self.bounds];
@@ -362,4 +365,88 @@ static CGFloat kLineWidth = 2;
     return [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0];
 }
 
+
+
+//        [UIView animateWithDuration:0.25
+//                         animations:^{
+//
+//                         }
+//                         completion:^(BOOL finished) {
+//
+//                         }];
+
+-(void)dismissAnimated:(BOOL)animated completion:(SMWaitingDismissed)completion{
+    if(animated){
+        switch(self.animationType){
+            case kSMAnimateFadeSquaresThenLine:
+                [self animateFadeSquaresThenLinesWithCompletion:completion];
+                break;
+            case kSMAnimateFadeSquaresInSequence:
+                [self animateFadeOutInSequenceWithCompletion:completion];
+                break;
+            default:
+                break;
+        }
+    }
+    else{
+        [self removeFromSuperview];
+        completion();
+    }
+}
+
+-(void)animateFadeSquaresThenLinesWithCompletion:(SMWaitingDismissed)completion{
+        NSTimeInterval duration = 0.1;
+        [UIView animateWithDuration:duration
+                         animations:^{
+                             for(NSUInteger index = 0; index < 9; index++){
+                                 _views[index].backgroundColor = [UIColor blackColor];
+                                 _views[index].alpha = 0;
+                             }
+                         }
+                         completion:^(BOOL finished) {
+                             [UIView animateWithDuration:duration
+                                              animations:^{
+                                                  for(NSUInteger index = 0; index < 8; index++){
+                                                      _lines[index].backgroundColor = [UIColor blackColor];
+                                                      _lines[index].alpha = 0;
+                                                  }
+                                              }
+                                              completion:^(BOOL finished) {
+
+                                                  [UIView animateWithDuration:duration
+                                                                   animations:^{
+                                                                       self.alpha = 0;
+                                                                   }
+                                                                   completion:^(BOOL finished) {
+                                                                       [self removeFromSuperview];
+                                                                       completion();
+                                                                   }];
+                                              }];
+                         }];
+}
+
+-(void)animateFadeOutInSequenceWithCompletion:(SMWaitingDismissed)completion{
+    static int index = 0;
+    [UIView animateWithDuration:0.01
+                     animations:^{
+                         int sequence[10] = {0, 1, 2, 5, 8, 7, 6, 3, 4, 0};
+                         _views[sequence[index]].alpha = 0;
+                     }
+                     completion:^(BOOL finished) {
+                         if(index == 9){
+                             [UIView animateWithDuration:0.25
+                                              animations:^{
+                                                  self.alpha = 0;
+                                              }
+                                              completion:^(BOOL finished) {
+                                                  index = 0;
+                                                  completion();
+                                              }];
+                         }
+                         else{
+                             index++;
+                             [self animateFadeOutInSequenceWithCompletion:completion];
+                         }
+                     }];
+}
 @end

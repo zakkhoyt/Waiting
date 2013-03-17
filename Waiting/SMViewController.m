@@ -2,27 +2,32 @@
 //  SMViewController.m
 //  Waiting
 //
-//  Created by Zakk Hoyt on 3/16/13.
+//  Created by Zakk Hoyt on 3/17/13.
 //  Copyright (c) 2013 Zakk Hoyt. All rights reserved.
 //
 
 #import "SMViewController.h"
-#import "SMWaitingViewController.h"
+#import "SMProgressHUD.h"
 
-__attribute ((unused)) static NSString *kSegueMainToWaiting = @"segueMainToWaiting";
-__attribute ((unused)) static NSString *kSegueMainToNash = @"segueMainToNash";
-
-
-@interface SMViewController () <SMWaitingViewControllerDelegate>
-
+@interface SMViewController ()
+@property (nonatomic, strong) SMProgressHUD *waitingView;
 @end
 
 @implementation SMViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,34 +35,18 @@ __attribute ((unused)) static NSString *kSegueMainToNash = @"segueMainToNash";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:kSegueMainToWaiting]){
-        SMWaitingViewController *vc = segue.destinationViewController;
-        vc.delegate = self;
-    }
-    else     if([segue.identifier isEqualToString:kSegueMainToWaiting]){
-        SMWaitingViewController *vc = segue.destinationViewController;
-        vc.delegate = self;
-    }
-
-}
 - (IBAction)testButtonTouchUpInside:(id)sender {
-    [self performSegueWithIdentifier:kSegueMainToWaiting sender:self];
+    self.waitingView = [[SMProgressHUD alloc]initWithFrame:self.view.bounds];
+//    self.waitingView.animationType = kSMAnimateFadeSquaresInSequence;
+    self.waitingView.animationType = kSMAnimateFadeSquaresThenLine;
+    [self.view addSubview:self.waitingView];
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(removeWaitingView) userInfo:nil repeats:NO];
 }
 
-- (IBAction)waiting02ButtonTouchUpInside:(id)sender {
-    [self performSegueWithIdentifier:kSegueMainToNash sender:self];
+-(void)removeWaitingView{
+    [self.waitingView dismissAnimated:YES completion:^{
+        self.waitingView = nil;
+    }];
 }
-
-
-#pragma mark - Implements SMWaitingViewControllerDelegate
--(void)SMWaitingViewControllerUserIsDone:(SMWaitingViewController*)sender{
-    [sender dismissViewControllerAnimated:YES completion:^{}];
-}
-
-
-
 
 @end
