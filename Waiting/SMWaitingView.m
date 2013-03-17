@@ -16,6 +16,7 @@ static CGFloat kLineWidth = 2;
 
 @implementation SMWaitingView{
     UIView* _views[9];
+    UIView* _lines[8];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -40,89 +41,24 @@ static CGFloat kLineWidth = 2;
         
         
         // Add lines
-//        UIColor *lineColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.9 alpha:1.0];
-        UIColor *lineColor = [UIColor darkGrayColor];
-        
-        
-        CGRect line0Frame = CGRectMake(self.center.x - 1.5 * kWidth,
-                                       self.center.y - 1.5 * kHeight,
-                                       kLineWidth, 3.0 * kWidth);
-        
-        UIView* line0 = [[UIView alloc]initWithFrame:line0Frame];
-        line0.backgroundColor = lineColor;
-        [self addSubview:line0];
-        
-        CGRect line1Frame = CGRectMake(self.center.x - 0.5 * kWidth,
-                                      self.center.y - 1.5 * kHeight,
-                                      kLineWidth, 3.0 * kWidth);
-        
-        UIView* line1 = [[UIView alloc]initWithFrame:line1Frame];
-        line1.backgroundColor = lineColor;
-        [self addSubview:line1];
-    
-        CGRect line2Frame = CGRectMake(self.center.x + 0.5 * kWidth,
-                                      self.center.y - 1.5 * kHeight,
-                                      kLineWidth, 3.0 * kWidth);
-        
-        UIView* line2 = [[UIView alloc]initWithFrame:line2Frame];
-        line2.backgroundColor = lineColor;
-        [self addSubview:line2];
-        
-        CGRect line3Frame = CGRectMake(self.center.x + 1.5 * kWidth,
-                                       self.center.y - 1.5 * kHeight,
-                                       kLineWidth, 3.0 * kWidth);
-        
-        UIView* line3 = [[UIView alloc]initWithFrame:line3Frame];
-        line3.backgroundColor = lineColor;
-        [self addSubview:line3];
-        
-        
+        for(NSUInteger index = 0; index < 8; index++){
+            CGRect frame = [self lineRectForIndex:index];
+            _lines[index] = [[UIView alloc]initWithFrame:frame];
+            _lines[index].backgroundColor = [UIColor darkGrayColor];;
+            [self addSubview:_lines[index]];
+        }
         
 
-        CGRect line4Frame = CGRectMake(self.center.x - 1.5 * kWidth,
-                                       self.center.y - 1.5 * kHeight,
-                                       3.0 * kWidth, kLineWidth);
-        
-        UIView* line4 = [[UIView alloc]initWithFrame:line4Frame];
-        line4.backgroundColor = lineColor;
-        [self addSubview:line4];
-        
-        
-        
-
-        CGRect line5Frame = CGRectMake(self.center.x - 1.5 * kWidth,
-                                       self.center.y - 0.5 * kHeight,
-                                       3.0 * kWidth, kLineWidth);
-        
-        UIView* line5 = [[UIView alloc]initWithFrame:line5Frame];
-        line5.backgroundColor = lineColor;
-        [self addSubview:line5];
-
-        CGRect line6Frame = CGRectMake(self.center.x - 1.5 * kWidth,
-                                       self.center.y + 0.5 * kHeight,
-                                       3.0 * kWidth, kLineWidth);
-        
-        UIView* line6 = [[UIView alloc]initWithFrame:line6Frame];
-        line6.backgroundColor = lineColor;
-        [self addSubview:line6];
-        
-        CGRect line7Frame = CGRectMake(self.center.x - 1.5 * kWidth,
-                                       self.center.y + 1.5 * kHeight,
-                                       3.0 * kWidth, kLineWidth);
-        
-        UIView* line7 = [[UIView alloc]initWithFrame:line7Frame];
-        line7.backgroundColor = lineColor;
-        [self addSubview:line7];
-        
-        
-        
-        
-        
         [self animate];
+        [self takeALap];
+        
+        //This will indirectly call drawRect
         [NSTimer scheduledTimerWithTimeInterval:1/60.0 target:self selector:@selector(draw) userInfo:nil repeats:YES];
     }
     return self;
 }
+
+
 
 -(void)draw{
     [self setNeedsDisplay];
@@ -150,6 +86,53 @@ static CGFloat kLineWidth = 2;
     [self animate6];
     [self animate7];
     [self animate8];
+}
+
+-(void)takeALap{
+    static int index = 0;
+    
+    float xOffset = 0;
+    float yOffset = 0;
+    switch (index) {
+        case 0:
+            xOffset = -0.5 * kWidth;
+            yOffset = -0.5 * kHeight;
+            break;
+        case 1:
+            xOffset = 0.5 * kWidth;
+            yOffset = -0.5 * kHeight;
+            break;
+        case 2:
+            xOffset = 0.5 * kWidth;
+            yOffset = 0.5 * kHeight;
+            break;
+        case 3:
+            xOffset = -0.5 * kWidth;
+            yOffset = 0.5 * kHeight;
+            break;
+        default:
+            break;
+    }
+    
+    [UIView animateWithDuration:2.0
+                     animations:^{
+                         for(NSUInteger index = 0; index < 9; index++){
+                             CGRect frame = _views[index].frame;
+                             frame.origin.x += xOffset;
+                             frame.origin.y += yOffset;
+                             _views[index].frame = frame;
+                         }
+                         for(NSUInteger index = 0; index < 9; index++){
+                             CGRect frame = _lines[index].frame;
+                             frame.origin.x += xOffset;
+                             frame.origin.y += yOffset;
+                             _lines[index].frame = frame;
+                         }
+                     } completion:^(BOOL finished) {
+                         (index == 3) ? index = 0 : index++;
+                         [self takeALap];
+                     }];
+    
 }
 
 -(void)animate0{
@@ -286,6 +269,65 @@ static CGFloat kLineWidth = 2;
     
     return CGRectMake(0, 0, kWidth, kHeight);
 }
+
+
+
+
+-(CGRect)lineRectForIndex:(NSUInteger)index{
+    switch (index) {
+        case 0:
+            return CGRectMake(self.center.x - 1.5 * kWidth,
+                              self.center.y - 1.5 * kHeight,
+                              kLineWidth, 3.0 * kWidth);
+            break;
+            
+        case 1:
+            return CGRectMake(self.center.x - 0.5 * kWidth,
+                              self.center.y - 1.5 * kHeight,
+                              kLineWidth, 3.0 * kWidth);
+            break;
+        case 2:
+            return CGRectMake(self.center.x + 0.5 * kWidth,
+                              self.center.y - 1.5 * kHeight,
+                              kLineWidth, 3.0 * kWidth);
+            break;
+        case 3:
+            return CGRectMake(self.center.x + 1.5 * kWidth,
+                              self.center.y - 1.5 * kHeight,
+                              kLineWidth, 3.0 * kWidth);
+            break;
+        case 4:
+            return CGRectMake(self.center.x - 1.5 * kWidth,
+                              self.center.y - 1.5 * kHeight,
+                              3.0 * kWidth, kLineWidth);
+            
+            break;
+        case 5:
+            return CGRectMake(self.center.x - 1.5 * kWidth,
+                              self.center.y - 0.5 * kHeight,
+                              3.0 * kWidth, kLineWidth);
+            break;
+        case 6:
+            return CGRectMake(self.center.x - 1.5 * kWidth,
+                              self.center.y + 0.5 * kHeight,
+                              3.0 * kWidth, kLineWidth);
+            break;
+        case 7:
+            return CGRectMake(self.center.x - 1.5 * kWidth,
+                              self.center.y + 1.5 * kHeight,
+                              3.0 * kWidth, kLineWidth);
+            break;
+            
+        default:
+            break;
+    }
+    
+    return CGRectMake(self.center.x,
+                      self.center.y,
+                      3.0 * kWidth, kLineWidth);
+}
+
+
 
 -(NSTimeInterval)randomDuration{
     return (arc4random() % 20) / 10.0;
