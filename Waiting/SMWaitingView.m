@@ -11,6 +11,7 @@
 
 static CGFloat kWidth = 25;
 static CGFloat kHeight = 25;
+static CGFloat kLineWidth = 2;
 
 
 @implementation SMWaitingView{
@@ -29,12 +30,94 @@ static CGFloat kHeight = 25;
         translucentBackground.alpha = 0.75;
         [self addSubview:translucentBackground];
         
+        // Add squares
         for(NSUInteger index = 0; index < 9; index++){
             CGRect frame = [self rectForIndex:index];
             _views[index] = [[UIView alloc]initWithFrame:frame];
             _views[index].backgroundColor = [self randomColor];
             [self addSubview:_views[index]];
         }
+        
+        
+        // Add lines
+//        UIColor *lineColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.9 alpha:1.0];
+        UIColor *lineColor = [UIColor darkGrayColor];
+        
+        
+        CGRect line0Frame = CGRectMake(self.center.x - 1.5 * kWidth,
+                                       self.center.y - 1.5 * kHeight,
+                                       kLineWidth, 3.0 * kWidth);
+        
+        UIView* line0 = [[UIView alloc]initWithFrame:line0Frame];
+        line0.backgroundColor = lineColor;
+        [self addSubview:line0];
+        
+        CGRect line1Frame = CGRectMake(self.center.x - 0.5 * kWidth,
+                                      self.center.y - 1.5 * kHeight,
+                                      kLineWidth, 3.0 * kWidth);
+        
+        UIView* line1 = [[UIView alloc]initWithFrame:line1Frame];
+        line1.backgroundColor = lineColor;
+        [self addSubview:line1];
+    
+        CGRect line2Frame = CGRectMake(self.center.x + 0.5 * kWidth,
+                                      self.center.y - 1.5 * kHeight,
+                                      kLineWidth, 3.0 * kWidth);
+        
+        UIView* line2 = [[UIView alloc]initWithFrame:line2Frame];
+        line2.backgroundColor = lineColor;
+        [self addSubview:line2];
+        
+        CGRect line3Frame = CGRectMake(self.center.x + 1.5 * kWidth,
+                                       self.center.y - 1.5 * kHeight,
+                                       kLineWidth, 3.0 * kWidth);
+        
+        UIView* line3 = [[UIView alloc]initWithFrame:line3Frame];
+        line3.backgroundColor = lineColor;
+        [self addSubview:line3];
+        
+        
+        
+
+        CGRect line4Frame = CGRectMake(self.center.x - 1.5 * kWidth,
+                                       self.center.y - 1.5 * kHeight,
+                                       3.0 * kWidth, kLineWidth);
+        
+        UIView* line4 = [[UIView alloc]initWithFrame:line4Frame];
+        line4.backgroundColor = lineColor;
+        [self addSubview:line4];
+        
+        
+        
+
+        CGRect line5Frame = CGRectMake(self.center.x - 1.5 * kWidth,
+                                       self.center.y - 0.5 * kHeight,
+                                       3.0 * kWidth, kLineWidth);
+        
+        UIView* line5 = [[UIView alloc]initWithFrame:line5Frame];
+        line5.backgroundColor = lineColor;
+        [self addSubview:line5];
+
+        CGRect line6Frame = CGRectMake(self.center.x - 1.5 * kWidth,
+                                       self.center.y + 0.5 * kHeight,
+                                       3.0 * kWidth, kLineWidth);
+        
+        UIView* line6 = [[UIView alloc]initWithFrame:line6Frame];
+        line6.backgroundColor = lineColor;
+        [self addSubview:line6];
+        
+        CGRect line7Frame = CGRectMake(self.center.x - 1.5 * kWidth,
+                                       self.center.y + 1.5 * kHeight,
+                                       3.0 * kWidth, kLineWidth);
+        
+        UIView* line7 = [[UIView alloc]initWithFrame:line7Frame];
+        line7.backgroundColor = lineColor;
+        [self addSubview:line7];
+        
+        
+        
+        
+        
         [self animate];
         [NSTimer scheduledTimerWithTimeInterval:1/60.0 target:self selector:@selector(draw) userInfo:nil repeats:YES];
     }
