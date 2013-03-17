@@ -1,32 +1,31 @@
 //
-//  SMProgressHUD.m
+//  SMProgressView.m
 //  Waiting
 //
-//  Created by Zakk Hoyt on 3/16/13.
+//  Created by Zakk Hoyt on 3/17/13.
 //  Copyright (c) 2013 Zakk Hoyt. All rights reserved.
 //
 
-#import "SMProgressHUD.h"
-
+#import "SMProgressView.h"
 
 static CGFloat kWidth = 25;
 static CGFloat kHeight = 25;
 static CGFloat kLineWidth = 2;
 
 
-@implementation SMProgressHUD{
+@implementation SMProgressView{
     UIView* _views[9];
     UIView* _lines[8];
     NSTimer *_lapTimer;
-    BOOL _terminate;
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
-
+    
     self = [super initWithFrame:frame];
     if (self) {
-        _terminate = NO;
+//        self.animationType = kSMAnimateFadeSquaresThenLine;
+        
         self.backgroundColor = [UIColor clearColor];
         // add a background with a semialpha
         UIView *translucentBackground = [[UIView alloc]initWithFrame:self.bounds];
@@ -39,6 +38,7 @@ static CGFloat kLineWidth = 2;
             CGRect frame = [self rectForIndex:index];
             _views[index] = [[UIView alloc]initWithFrame:frame];
             _views[index].backgroundColor = [self randomColor];
+            _views[index].alpha = 0;
             [self addSubview:_views[index]];
         }
         
@@ -50,7 +50,11 @@ static CGFloat kLineWidth = 2;
             _lines[index].backgroundColor = [UIColor darkGrayColor];;
             [self addSubview:_lines[index]];
         }
-
+        
+        
+        [self animate];
+//        [self takeALap];
+        
         //This will indirectly call drawRect
         [NSTimer scheduledTimerWithTimeInterval:1/60.0 target:self selector:@selector(draw) userInfo:nil repeats:YES];
     }
@@ -69,12 +73,7 @@ static CGFloat kLineWidth = 2;
 }
 
 
-
-
-// Recursive function for animation
--(void)animateLogoWithLaps{
-    if(_terminate == YES) return;
-    
+-(void)animate{
     static int index = 0;
     static BOOL isAppearing = YES;
     
@@ -103,26 +102,11 @@ static CGFloat kLineWidth = 2;
                          else{
                              delay = 0.0;
                          }
-                         [self animateLogoWithLaps];
+                         [self animate];
                      }];
 }
 
--(void)animateLogoWithRandomColorsAndIntervals{
-    // Animate with different intervals
-    [self animate0];
-    [self animate1];
-    [self animate2];
-    [self animate3];
-    [self animate4];
-    [self animate5];
-    [self animate6];
-    [self animate7];
-    [self animate8];
-}
-
-// Recursive function for animation
 -(void)takeALap{
-    if(_terminate == YES) return;
     static int index = 0;
     
     float xOffset = 0;
@@ -170,7 +154,6 @@ static CGFloat kLineWidth = 2;
 }
 
 -(void)animate0{
-    if(_terminate == YES) return;
     [UIView animateWithDuration:[self randomDuration]
                      animations:^{
                          _views[0].backgroundColor = [self randomColor];
@@ -179,7 +162,6 @@ static CGFloat kLineWidth = 2;
                      }];
 }
 -(void)animate1{
-    if(_terminate == YES) return;
     [UIView animateWithDuration:[self randomDuration]
                      animations:^{
                          _views[1].backgroundColor = [self randomColor];
@@ -189,7 +171,6 @@ static CGFloat kLineWidth = 2;
     
 }
 -(void)animate2{
-    if(_terminate == YES) return;
     [UIView animateWithDuration:[self randomDuration]
                      animations:^{
                          _views[2].backgroundColor = [self randomColor];
@@ -199,7 +180,6 @@ static CGFloat kLineWidth = 2;
     
 }
 -(void)animate3{
-    if(_terminate == YES) return;
     [UIView animateWithDuration:[self randomDuration]
                      animations:^{
                          _views[3].backgroundColor = [self randomColor];
@@ -209,7 +189,6 @@ static CGFloat kLineWidth = 2;
     
 }
 -(void)animate4{
-    if(_terminate == YES) return;
     [UIView animateWithDuration:[self randomDuration]
                      animations:^{
                          _views[4].backgroundColor = [self randomColor];
@@ -219,7 +198,6 @@ static CGFloat kLineWidth = 2;
     
 }
 -(void)animate5{
-    if(_terminate == YES) return;
     [UIView animateWithDuration:[self randomDuration]
                      animations:^{
                          _views[5].backgroundColor = [self randomColor];
@@ -229,7 +207,6 @@ static CGFloat kLineWidth = 2;
     
 }
 -(void)animate6{
-    if(_terminate == YES) return;
     [UIView animateWithDuration:[self randomDuration]
                      animations:^{
                          _views[6].backgroundColor = [self randomColor];
@@ -239,7 +216,6 @@ static CGFloat kLineWidth = 2;
     
 }
 -(void)animate7{
-    if(_terminate == YES) return;
     [UIView animateWithDuration:[self randomDuration]
                      animations:^{
                          _views[7].backgroundColor = [self randomColor];
@@ -249,7 +225,6 @@ static CGFloat kLineWidth = 2;
     
 }
 -(void)animate8{
-    if(_terminate == YES) return;
     [UIView animateWithDuration:[self randomDuration]
                      animations:^{
                          _views[8].backgroundColor = [self randomColor];
@@ -307,7 +282,7 @@ static CGFloat kLineWidth = 2;
                               self.center.y + kHeight * 0.5,
                               kWidth, kHeight);
             break;
-
+            
     }
     
     return CGRectMake(0, 0, kWidth, kHeight);
@@ -413,103 +388,86 @@ static CGFloat kLineWidth = 2;
 
 
 
+//        [UIView animateWithDuration:0.25
+//                         animations:^{
+//
+//                         }
+//                         completion:^(BOOL finished) {
+//
+//                         }];
 
--(void)animateFadeSquaresThenLinesWithCompletion:(SMWaitingDismissed)completion{
-        NSTimeInterval duration = 0.1;
-        [UIView animateWithDuration:duration
-                         animations:^{
-                             for(NSUInteger index = 0; index < 9; index++){
-                                 _views[index].backgroundColor = [UIColor blackColor];
-                                 _views[index].alpha = 0;
-                             }
-                         }
-                         completion:^(BOOL finished) {
-                             [UIView animateWithDuration:duration
-                                              animations:^{
-                                                  for(NSUInteger index = 0; index < 8; index++){
-                                                      _lines[index].backgroundColor = [UIColor blackColor];
-                                                      _lines[index].alpha = 0;
-                                                  }
-                                              }
-                                              completion:^(BOOL finished) {
-
-                                                  [UIView animateWithDuration:duration
-                                                                   animations:^{
-                                                                       self.alpha = 0;
-                                                                   }
-                                                                   completion:^(BOOL finished) {
-                                                                       _terminate = YES;
-                                                                       [self removeFromSuperview];
-                                                                       completion();
-                                                                   }];
-                                              }];
-                         }];
+-(void)dismissAnimated:(BOOL)animated completion:(SMProgessViewDismissed)completion{
+//    if(animated){
+//        switch(self.animationType){
+//            case kSMAnimateFadeSquaresThenLine:
+//                [self animateFadeSquaresThenLinesWithCompletion:completion];
+//                break;
+//            case kSMAnimateFadeSquaresInSequence:
+//                [self animateFadeOutInSequenceWithCompletion:completion];
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+//    else{
+//        [self removeFromSuperview];
+//        completion();
+//    }
 }
 
--(void)animateFadeOutInSequenceWithCompletion:(SMWaitingDismissed)completion{
-    if(_terminate == YES) return;
-    static int index = 0;
-    [UIView animateWithDuration:0.01
-                     animations:^{
-                         int sequence[10] = {0, 1, 2, 5, 8, 7, 6, 3, 4, 0};
-                         _views[sequence[index]].alpha = 0;
-                     }
-                     completion:^(BOOL finished) {
-                         if(index == 9){
-                             [UIView animateWithDuration:0.25
-                                              animations:^{
-                                                  self.alpha = 0;
-                                              }
-                                              completion:^(BOOL finished) {
-                                                  index = 0;
-                                                  _terminate = YES;
-                                                  [self removeFromSuperview];
-                                                  completion();
-                                              }];
-                         }
-                         else{
-                             index++;
-                             [self animateFadeOutInSequenceWithCompletion:completion];
-                         }
-                     }];
-}
-
-
-
-
--(void)dismissWithAnimationType:(SMProgressHUDEndingAnimationType)animationType completion:(SMWaitingDismissed)completion{
-    
-    if(animationType){
-        switch(animationType){
-            case SMProgressHUDEndingAnimationTypeFadeSquaresThenLine:
-                [self animateFadeSquaresThenLinesWithCompletion:completion];
-                break;
-            case SMProgressHUDEndingAnimationTypeFadeSquaresInSequence:
-                [self animateFadeOutInSequenceWithCompletion:completion];
-                break;
-            default:
-                break;
-        }
-    }
-    else{
-        _terminate = YES;
-        [self removeFromSuperview];
-        completion();
-    }
-}
-
--(void)animate:(SMProgressHUDLogoAnimationType)animationType{
-    switch(animationType){
-        case SMProgressHUDLogoAnimationTypeLaps:
-            [self animateLogoWithLaps];
-            break;
-        case SMProgressHUDLogoAnimationTypeRandomColorsAndIntervals:
-            [self animateLogoWithRandomColorsAndIntervals];
-        default:
-            break;
-    }
-    
-    [self takeALap];
-
-}
+//-(void)animateFadeSquaresThenLinesWithCompletion:(SMWaitingDismissed)completion{
+//    NSTimeInterval duration = 0.1;
+//    [UIView animateWithDuration:duration
+//                     animations:^{
+//                         for(NSUInteger index = 0; index < 9; index++){
+//                             _views[index].backgroundColor = [UIColor blackColor];
+//                             _views[index].alpha = 0;
+//                         }
+//                     }
+//                     completion:^(BOOL finished) {
+//                         [UIView animateWithDuration:duration
+//                                          animations:^{
+//                                              for(NSUInteger index = 0; index < 8; index++){
+//                                                  _lines[index].backgroundColor = [UIColor blackColor];
+//                                                  _lines[index].alpha = 0;
+//                                              }
+//                                          }
+//                                          completion:^(BOOL finished) {
+//                                              
+//                                              [UIView animateWithDuration:duration
+//                                                               animations:^{
+//                                                                   self.alpha = 0;
+//                                                               }
+//                                                               completion:^(BOOL finished) {
+//                                                                   [self removeFromSuperview];
+//                                                                   completion();
+//                                                               }];
+//                                          }];
+//                     }];
+//}
+//
+//-(void)animateFadeOutInSequenceWithCompletion:(SMWaitingDismissed)completion{
+//    static int index = 0;
+//    [UIView animateWithDuration:0.01
+//                     animations:^{
+//                         int sequence[10] = {0, 1, 2, 5, 8, 7, 6, 3, 4, 0};
+//                         _views[sequence[index]].alpha = 0;
+//                     }
+//                     completion:^(BOOL finished) {
+//                         if(index == 9){
+//                             [UIView animateWithDuration:0.25
+//                                              animations:^{
+//                                                  self.alpha = 0;
+//                                              }
+//                                              completion:^(BOOL finished) {
+//                                                  index = 0;
+//                                                  completion();
+//                                              }];
+//                         }
+//                         else{
+//                             index++;
+//                             [self animateFadeOutInSequenceWithCompletion:completion];
+//                         }
+//                     }];
+//}
 @end

@@ -13,9 +13,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="darksiders.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4bD-rn-EsG"/>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOE-vT-sWt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODo-FK-Ike">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Test HUD">
+                                <state key="normal" title="Test HUD1">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -23,7 +23,20 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="testButtonTouchUpInside:" destination="yp7-yh-FuC" eventType="touchUpInside" id="O73-k6-rEq"/>
+                                    <action selector="testButtonTouchUpInside:" destination="yp7-yh-FuC" eventType="touchUpInside" id="xQo-hs-TJy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOE-vT-sWt">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Test HUD2">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testHUD2ButtonTouchUpInside:" destination="yp7-yh-FuC" eventType="touchUpInside" id="IeS-bv-9IN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -33,6 +46,8 @@
                             <constraint firstItem="4bD-rn-EsG" firstAttribute="bottom" secondItem="Lqw-F5-2dS" secondAttribute="bottom" type="default" id="59q-o7-ZsE"/>
                             <constraint firstItem="4bD-rn-EsG" firstAttribute="top" secondItem="Lqw-F5-2dS" secondAttribute="top" type="default" id="7yN-Jr-jeP"/>
                             <constraint firstItem="UOE-vT-sWt" firstAttribute="top" secondItem="Lqw-F5-2dS" secondAttribute="top" constant="20" symbolic="YES" type="default" id="ORi-9w-VgV"/>
+                            <constraint firstItem="ODo-FK-Ike" firstAttribute="leading" secondItem="Lqw-F5-2dS" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Vp6-sY-I8u"/>
+                            <constraint firstItem="ODo-FK-Ike" firstAttribute="top" secondItem="Lqw-F5-2dS" secondAttribute="top" constant="20" symbolic="YES" type="default" id="ZEq-bC-aWv"/>
                             <constraint firstAttribute="trailing" secondItem="UOE-vT-sWt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nfU-mb-cgV"/>
                             <constraint firstItem="4bD-rn-EsG" firstAttribute="leading" secondItem="Lqw-F5-2dS" secondAttribute="leading" type="default" id="yvv-4J-9TH"/>
                         </constraints>
@@ -46,6 +61,18 @@
     <resources>
         <image name="darksiders.jpg" width="640" height="1136"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SMViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="testButtonTouchUpInside:"/>
+                <relationship kind="action" name="testHUD2ButtonTouchUpInside:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

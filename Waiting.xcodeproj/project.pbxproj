@@ -60,6 +60,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C676D30E16F676FA0064838D /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				C6CFF93016F5919E008ACE1B /* SMProgressHUD.h */,
+				C6CFF93116F5919E008ACE1B /* SMProgressHUD.m */,
+			);
+			name = HUD;
+			sourceTree = "<group>";
+		};
 		C6CFF8E516F57B93008ACE1B = {
 			isa = PBXGroup;
 			children = (
@@ -90,14 +99,13 @@
 		C6CFF8F716F57B93008ACE1B /* Waiting */ = {
 			isa = PBXGroup;
 			children = (
+				C676D30E16F676FA0064838D /* HUD */,
 				C676D30916F6697B0064838D /* darksiders.jpg */,
 				C6CFF8F816F57B93008ACE1B /* Supporting Files */,
 				C6CFF90916F57B93008ACE1B /* MainStoryboard_iPhone.storyboard */,
 				C6CFF90C16F57B93008ACE1B /* MainStoryboard_iPad.storyboard */,
 				C6CFF90016F57B93008ACE1B /* SMAppDelegate.h */,
 				C6CFF90116F57B93008ACE1B /* SMAppDelegate.m */,
-				C6CFF93016F5919E008ACE1B /* SMProgressHUD.h */,
-				C6CFF93116F5919E008ACE1B /* SMProgressHUD.m */,
 				C6CFF93516F66560008ACE1B /* SMViewController.h */,
 				C6CFF93616F66560008ACE1B /* SMViewController.m */,
 			);

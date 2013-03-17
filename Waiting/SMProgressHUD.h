@@ -10,11 +10,18 @@
 typedef void (^SMWaitingDismissed)(void);
 
 typedef enum {
-    kSMAnimateFadeSquaresThenLine = 0,
-    kSMAnimateFadeSquaresInSequence = 1,
-} SMProgressHUDAnimationType;
+    SMProgressHUDEndingAnimationTypeFadeSquaresThenLine = 0,
+    SMProgressHUDEndingAnimationTypeFadeSquaresInSequence = 1,
+} SMProgressHUDEndingAnimationType;
+
+typedef enum {
+    SMProgressHUDLogoAnimationTypeRandomColorsAndIntervals = 0,
+    SMProgressHUDLogoAnimationTypeLaps = 1,
+} SMProgressHUDLogoAnimationType;
 
 @interface SMProgressHUD : UIView
-@property (nonatomic) SMProgressHUDAnimationType animationType;
--(void)dismissAnimated:(BOOL)animated completion:(SMWaitingDismissed)completion;
+
+-(void)animate:(SMProgressHUDLogoAnimationType)animationType;
+-(void)dismissWithAnimationType:(SMProgressHUDEndingAnimationType)animationType completion:(SMWaitingDismissed)completion;
+
 @end

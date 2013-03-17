@@ -9,8 +9,10 @@
 #import "SMViewController.h"
 #import "SMProgressHUD.h"
 
+
 @interface SMViewController ()
-@property (nonatomic, strong) SMProgressHUD *waitingView;
+@property (nonatomic, strong) SMProgressHUD *progressHUDView;
+
 @end
 
 @implementation SMViewController
@@ -36,17 +38,26 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)testButtonTouchUpInside:(id)sender {
-    self.waitingView = [[SMProgressHUD alloc]initWithFrame:self.view.bounds];
-//    self.waitingView.animationType = kSMAnimateFadeSquaresInSequence;
-    self.waitingView.animationType = kSMAnimateFadeSquaresThenLine;
-    [self.view addSubview:self.waitingView];
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(removeWaitingView) userInfo:nil repeats:NO];
+    self.progressHUDView = [[SMProgressHUD alloc]initWithFrame:self.view.bounds];
+    [self.view addSubview:self.progressHUDView];
+    [self.progressHUDView animate:SMProgressHUDLogoAnimationTypeRandomColorsAndIntervals];
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(removeSMProgressHUD) userInfo:nil repeats:NO];
+    
+}
+- (IBAction)testHUD2ButtonTouchUpInside:(id)sender {
+    self.progressHUDView = [[SMProgressHUD alloc]initWithFrame:self.view.bounds];
+    [self.view addSubview:self.progressHUDView];
+    [self.progressHUDView animate:SMProgressHUDLogoAnimationTypeLaps];
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(removeSMProgressHUD) userInfo:nil repeats:NO];
+
 }
 
--(void)removeWaitingView{
-    [self.waitingView dismissAnimated:YES completion:^{
-        self.waitingView = nil;
-    }];
+
+-(void)removeSMProgressHUD{
+    [self.progressHUDView dismissWithAnimationType:SMProgressHUDEndingAnimationTypeFadeSquaresInSequence
+                                        completion:^{
+                                            self.progressHUDView = nil;
+                                        }];
 }
 
 @end

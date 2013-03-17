@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Waiting/SMViewController.m"
-         timestampString = "385190203.812865"
+         timestampString = "385251750.39719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "25"
-         endingLineNumber = "25"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -92,6 +92,19 @@
          startingLineNumber = "39"
          endingLineNumber = "39"
          landmarkName = "-testButtonTouchUpInside:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Waiting/SMProgressHUD.m"
+         timestampString = "385254762.441618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "494"
+         endingLineNumber = "494"
+         landmarkName = "-dismissWithAnimationType:completion:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
