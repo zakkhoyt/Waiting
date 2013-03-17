@@ -11,7 +11,7 @@
 
 static CGFloat kWidth = 25;
 static CGFloat kHeight = 25;
-static float kWaitingAnimationDuration = 1.0;
+
 
 @implementation SMWaitingView{
     UIView* _views[9];
@@ -36,10 +36,14 @@ static float kWaitingAnimationDuration = 1.0;
             [self addSubview:_views[index]];
         }
         [self animate];
+        [NSTimer scheduledTimerWithTimeInterval:1/60.0 target:self selector:@selector(draw) userInfo:nil repeats:YES];
     }
     return self;
 }
 
+-(void)draw{
+    [self setNeedsDisplay];
+}
 -(void)animate{
     
     // Animate all at same interval
@@ -148,7 +152,6 @@ static float kWaitingAnimationDuration = 1.0;
 
 
 -(CGRect)rectForIndex:(NSUInteger)index{
-
     switch(index){
         case 0:
             return CGRectMake(self.center.x - kWidth * 1.5,
@@ -244,13 +247,31 @@ static float kWaitingAnimationDuration = 1.0;
 }
 
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+//- (void)drawRect:(CGRect)rect{
+//    CGContextRef c = UIGraphicsGetCurrentContext();
+//    CGFloat black[4] = {0, 1, 0, 1};
+//    
+//    CGContextSetStrokeColor(c, black);
+//    
+//    
+//    CGContextBeginPath(c);
+//    CGContextSetLineWidth(c, 2.0f);
+//    CGPoint start = CGPointMake(self.center.x - 4.5 * kWidth, self.center.y - 1.5 * kWidth);
+//    CGContextMoveToPoint(c, start.x, start.y);
+//    CGPoint end = CGPointMake( self.center.x - 0.5 * kWidth, self.center.y + 1.5 * kWidth);
+//    CGContextAddLineToPoint(c, end.x, end.y);
+//    
+//    
+//    NSLog(@"drawing from %@ to %@", NSStringFromCGPoint(start), NSStringFromCGPoint(end));
+//
+//    CGContextStrokePath(c);
+//
+//}
+
+
+
+
+
+
 
 @end
