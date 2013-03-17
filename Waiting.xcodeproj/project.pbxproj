@@ -19,6 +19,18 @@
 		C6CFF90B16F57B93008ACE1B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF90916F57B93008ACE1B /* MainStoryboard_iPhone.storyboard */; };
 		C6CFF90E16F57B93008ACE1B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF90C16F57B93008ACE1B /* MainStoryboard_iPad.storyboard */; };
 		C6CFF91116F57B93008ACE1B /* SMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFF91016F57B93008ACE1B /* SMViewController.m */; };
+		C6CFF92116F57BEB008ACE1B /* icon_square_0.png in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF91816F57BEB008ACE1B /* icon_square_0.png */; };
+		C6CFF92216F57BEB008ACE1B /* icon_square_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF91916F57BEB008ACE1B /* icon_square_1.png */; };
+		C6CFF92316F57BEB008ACE1B /* icon_square_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF91A16F57BEB008ACE1B /* icon_square_2.png */; };
+		C6CFF92416F57BEB008ACE1B /* icon_square_3.png in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF91B16F57BEB008ACE1B /* icon_square_3.png */; };
+		C6CFF92516F57BEB008ACE1B /* icon_square_4.png in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF91C16F57BEB008ACE1B /* icon_square_4.png */; };
+		C6CFF92616F57BEB008ACE1B /* icon_square_5.png in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF91D16F57BEB008ACE1B /* icon_square_5.png */; };
+		C6CFF92716F57BEB008ACE1B /* icon_square_6.png in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF91E16F57BEB008ACE1B /* icon_square_6.png */; };
+		C6CFF92816F57BEB008ACE1B /* icon_square_7.png in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF91F16F57BEB008ACE1B /* icon_square_7.png */; };
+		C6CFF92916F57BEB008ACE1B /* icon_square_8.png in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF92016F57BEB008ACE1B /* icon_square_8.png */; };
+		C6CFF92C16F57C25008ACE1B /* SMWaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFF92B16F57C25008ACE1B /* SMWaitingViewController.m */; };
+		C6CFF92F16F587A4008ACE1B /* SMNashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFF92E16F587A4008ACE1B /* SMNashViewController.m */; };
+		C6CFF93216F5919E008ACE1B /* SMWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFF93116F5919E008ACE1B /* SMWaitingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +51,21 @@
 		C6CFF90D16F57B93008ACE1B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C6CFF90F16F57B93008ACE1B /* SMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMViewController.h; sourceTree = "<group>"; };
 		C6CFF91016F57B93008ACE1B /* SMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMViewController.m; sourceTree = "<group>"; };
+		C6CFF91816F57BEB008ACE1B /* icon_square_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_square_0.png; sourceTree = "<group>"; };
+		C6CFF91916F57BEB008ACE1B /* icon_square_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_square_1.png; sourceTree = "<group>"; };
+		C6CFF91A16F57BEB008ACE1B /* icon_square_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_square_2.png; sourceTree = "<group>"; };
+		C6CFF91B16F57BEB008ACE1B /* icon_square_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_square_3.png; sourceTree = "<group>"; };
+		C6CFF91C16F57BEB008ACE1B /* icon_square_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_square_4.png; sourceTree = "<group>"; };
+		C6CFF91D16F57BEB008ACE1B /* icon_square_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_square_5.png; sourceTree = "<group>"; };
+		C6CFF91E16F57BEB008ACE1B /* icon_square_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_square_6.png; sourceTree = "<group>"; };
+		C6CFF91F16F57BEB008ACE1B /* icon_square_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_square_7.png; sourceTree = "<group>"; };
+		C6CFF92016F57BEB008ACE1B /* icon_square_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_square_8.png; sourceTree = "<group>"; };
+		C6CFF92A16F57C25008ACE1B /* SMWaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWaitingViewController.h; sourceTree = "<group>"; };
+		C6CFF92B16F57C25008ACE1B /* SMWaitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWaitingViewController.m; sourceTree = "<group>"; };
+		C6CFF92D16F587A4008ACE1B /* SMNashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNashViewController.h; sourceTree = "<group>"; };
+		C6CFF92E16F587A4008ACE1B /* SMNashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNashViewController.m; sourceTree = "<group>"; };
+		C6CFF93016F5919E008ACE1B /* SMWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWaitingView.h; sourceTree = "<group>"; };
+		C6CFF93116F5919E008ACE1B /* SMWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWaitingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,13 +112,20 @@
 		C6CFF8F716F57B93008ACE1B /* Waiting */ = {
 			isa = PBXGroup;
 			children = (
-				C6CFF90016F57B93008ACE1B /* SMAppDelegate.h */,
-				C6CFF90116F57B93008ACE1B /* SMAppDelegate.m */,
+				C6CFF8F816F57B93008ACE1B /* Supporting Files */,
+				C6CFF91716F57BEB008ACE1B /* images */,
 				C6CFF90916F57B93008ACE1B /* MainStoryboard_iPhone.storyboard */,
 				C6CFF90C16F57B93008ACE1B /* MainStoryboard_iPad.storyboard */,
+				C6CFF90016F57B93008ACE1B /* SMAppDelegate.h */,
+				C6CFF90116F57B93008ACE1B /* SMAppDelegate.m */,
 				C6CFF90F16F57B93008ACE1B /* SMViewController.h */,
 				C6CFF91016F57B93008ACE1B /* SMViewController.m */,
-				C6CFF8F816F57B93008ACE1B /* Supporting Files */,
+				C6CFF92A16F57C25008ACE1B /* SMWaitingViewController.h */,
+				C6CFF92B16F57C25008ACE1B /* SMWaitingViewController.m */,
+				C6CFF92D16F587A4008ACE1B /* SMNashViewController.h */,
+				C6CFF92E16F587A4008ACE1B /* SMNashViewController.m */,
+				C6CFF93016F5919E008ACE1B /* SMWaitingView.h */,
+				C6CFF93116F5919E008ACE1B /* SMWaitingView.m */,
 			);
 			path = Waiting;
 			sourceTree = "<group>";
@@ -108,6 +142,22 @@
 				C6CFF90716F57B93008ACE1B /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C6CFF91716F57BEB008ACE1B /* images */ = {
+			isa = PBXGroup;
+			children = (
+				C6CFF91816F57BEB008ACE1B /* icon_square_0.png */,
+				C6CFF91916F57BEB008ACE1B /* icon_square_1.png */,
+				C6CFF91A16F57BEB008ACE1B /* icon_square_2.png */,
+				C6CFF91B16F57BEB008ACE1B /* icon_square_3.png */,
+				C6CFF91C16F57BEB008ACE1B /* icon_square_4.png */,
+				C6CFF91D16F57BEB008ACE1B /* icon_square_5.png */,
+				C6CFF91E16F57BEB008ACE1B /* icon_square_6.png */,
+				C6CFF91F16F57BEB008ACE1B /* icon_square_7.png */,
+				C6CFF92016F57BEB008ACE1B /* icon_square_8.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +218,15 @@
 				C6CFF90816F57B93008ACE1B /* Default-568h@2x.png in Resources */,
 				C6CFF90B16F57B93008ACE1B /* MainStoryboard_iPhone.storyboard in Resources */,
 				C6CFF90E16F57B93008ACE1B /* MainStoryboard_iPad.storyboard in Resources */,
+				C6CFF92116F57BEB008ACE1B /* icon_square_0.png in Resources */,
+				C6CFF92216F57BEB008ACE1B /* icon_square_1.png in Resources */,
+				C6CFF92316F57BEB008ACE1B /* icon_square_2.png in Resources */,
+				C6CFF92416F57BEB008ACE1B /* icon_square_3.png in Resources */,
+				C6CFF92516F57BEB008ACE1B /* icon_square_4.png in Resources */,
+				C6CFF92616F57BEB008ACE1B /* icon_square_5.png in Resources */,
+				C6CFF92716F57BEB008ACE1B /* icon_square_6.png in Resources */,
+				C6CFF92816F57BEB008ACE1B /* icon_square_7.png in Resources */,
+				C6CFF92916F57BEB008ACE1B /* icon_square_8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +240,9 @@
 				C6CFF8FE16F57B93008ACE1B /* main.m in Sources */,
 				C6CFF90216F57B93008ACE1B /* SMAppDelegate.m in Sources */,
 				C6CFF91116F57B93008ACE1B /* SMViewController.m in Sources */,
+				C6CFF92C16F57C25008ACE1B /* SMWaitingViewController.m in Sources */,
+				C6CFF92F16F587A4008ACE1B /* SMNashViewController.m in Sources */,
+				C6CFF93216F5919E008ACE1B /* SMWaitingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

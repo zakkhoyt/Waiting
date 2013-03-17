@@ -1,5 +1,5 @@
 //
-//  SMViewController.h
+//  SMNashViewController.h
 //  Waiting
 //
 //  Created by Zakk Hoyt on 3/16/13.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface SMViewController : UIViewController
+@interface SMNashViewController : UIViewController
 
 @end
