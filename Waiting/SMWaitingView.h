@@ -9,6 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface SMWaitingView : UIView
--(void)show;
--(void)hide;
 @end

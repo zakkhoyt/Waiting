@@ -63,19 +63,13 @@ static CGFloat kLineWidth = 2;
 -(void)draw{
     [self setNeedsDisplay];
 }
+
+
+-(NSTimeInterval)randomDuration{
+    return (arc4random() % 10) / 10.0;
+}
+
 -(void)animate{
-    
-    // Animate all at same interval
-//    [UIView animateWithDuration:kWaitingAnimationDuration
-//                     animations:^{
-//                         for(NSUInteger index = 0; index < 9; index++){
-//                             _views[index].backgroundColor = [self randomColor];
-//                         }
-//                         
-//                     } completion:^(BOOL finished) {
-//                         [self animate];
-//                     }];
-    
     // Animate with different intervals
     [self animate0];
     [self animate1];
@@ -329,9 +323,7 @@ static CGFloat kLineWidth = 2;
 
 
 
--(NSTimeInterval)randomDuration{
-    return (arc4random() % 20) / 10.0;
-}
+
 
 -(UIColor*)randomColor{
     int r = arc4random() % 9;
@@ -368,35 +360,6 @@ static CGFloat kLineWidth = 2;
     }
     
     return [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0];
-    
 }
-
-
-//- (void)drawRect:(CGRect)rect{
-//    CGContextRef c = UIGraphicsGetCurrentContext();
-//    CGFloat black[4] = {0, 1, 0, 1};
-//    
-//    CGContextSetStrokeColor(c, black);
-//    
-//    
-//    CGContextBeginPath(c);
-//    CGContextSetLineWidth(c, 2.0f);
-//    CGPoint start = CGPointMake(self.center.x - 4.5 * kWidth, self.center.y - 1.5 * kWidth);
-//    CGContextMoveToPoint(c, start.x, start.y);
-//    CGPoint end = CGPointMake( self.center.x - 0.5 * kWidth, self.center.y + 1.5 * kWidth);
-//    CGContextAddLineToPoint(c, end.x, end.y);
-//    
-//    
-//    NSLog(@"drawing from %@ to %@", NSStringFromCGPoint(start), NSStringFromCGPoint(end));
-//
-//    CGContextStrokePath(c);
-//
-//}
-
-
-
-
-
-
 
 @end

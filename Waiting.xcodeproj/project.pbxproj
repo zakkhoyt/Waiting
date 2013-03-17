@@ -31,6 +31,7 @@
 		C6CFF92C16F57C25008ACE1B /* SMWaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFF92B16F57C25008ACE1B /* SMWaitingViewController.m */; };
 		C6CFF92F16F587A4008ACE1B /* SMNashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFF92E16F587A4008ACE1B /* SMNashViewController.m */; };
 		C6CFF93216F5919E008ACE1B /* SMWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFF93116F5919E008ACE1B /* SMWaitingView.m */; };
+		C6CFF93416F5B10E008ACE1B /* darksiders.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C6CFF93316F5B10E008ACE1B /* darksiders.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		C6CFF92E16F587A4008ACE1B /* SMNashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNashViewController.m; sourceTree = "<group>"; };
 		C6CFF93016F5919E008ACE1B /* SMWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWaitingView.h; sourceTree = "<group>"; };
 		C6CFF93116F5919E008ACE1B /* SMWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWaitingView.m; sourceTree = "<group>"; };
+		C6CFF93316F5B10E008ACE1B /* darksiders.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = darksiders.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		C6CFF91716F57BEB008ACE1B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C6CFF93316F5B10E008ACE1B /* darksiders.jpg */,
 				C6CFF91816F57BEB008ACE1B /* icon_square_0.png */,
 				C6CFF91916F57BEB008ACE1B /* icon_square_1.png */,
 				C6CFF91A16F57BEB008ACE1B /* icon_square_2.png */,
@@ -227,6 +230,7 @@
 				C6CFF92716F57BEB008ACE1B /* icon_square_6.png in Resources */,
 				C6CFF92816F57BEB008ACE1B /* icon_square_7.png in Resources */,
 				C6CFF92916F57BEB008ACE1B /* icon_square_8.png in Resources */,
+				C6CFF93416F5B10E008ACE1B /* darksiders.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
